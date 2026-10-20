@@ -1,0 +1,18 @@
+{
+  "name": "howtolivebetter",
+  "private": true,
+  "version": "1.0.0",
+  "description": "高性价比人生指南 — 690 条建议离线 App（Android APK / iOS / PWA）",
+  "scripts": {
+    "build:offline": "node tools/offline/build.mjs pwa/index.html",
+    "ios:add": "npx cap add ios",
+    "ios:sync": "npx cap sync ios"
+  },
+  "dependencies": {
+    "@capacitor/core": "^7.6.9",
+    "@capacitor/ios": "^7.6.9"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.6.9"
+  }
+}

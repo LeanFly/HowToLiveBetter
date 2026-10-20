@@ -1,0 +1,8 @@
+{
+  "appId": "com.howtolivebetter.app",
+  "appName": "高性价比人生指南",
+  "webDir": "pwa",
+  "server": {
+    "androidScheme": "https"
+  }
+}

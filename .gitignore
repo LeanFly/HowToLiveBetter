@@ -2,3 +2,20 @@
 .junie/
 node_modules/
 dist/
+
+# Android build artifacts
+android/build/
+android/dist/
+android/app/src/main/assets/index.html
+android/.gradle/
+*.apk
+
+# iOS build artifacts
+ios/build/
+ios/App/Pods/
+ios/App/Podfile.lock
+ios/App/App/public/
+*.ipa
+
+# local dev
+.DS_Store
