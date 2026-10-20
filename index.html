@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>高性价比人生指南 · 用最少的钱、时间和精力换回寿命、金钱和人身自由</title>
 <meta name="description" content="按性价比算账的人生指南：765 条建议，覆盖长寿防病、意外急救、省钱理财、防骗与法律红线、失业兜底、创业风险、恋爱婚育、出国与技能。每条写明成本、收益、证据等级和原始出处，可按钱、时间、毅力三个成本维度检索。">
 <meta name="keywords" content="长寿,健康,循证,总死亡率,省钱,理财,防骗,急救,法律常识,失业救助,劳动仲裁,创业风险,性价比">
@@ -50,6 +50,8 @@
   --font:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
   --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
   --nav-h:64px; --side-w:272px;
+  /* 刘海屏/灵动岛安全区：env() 在普通桌面浏览器里为 0，不影响网页版 */
+  --safe-top:env(safe-area-inset-top,0px); --safe-bottom:env(safe-area-inset-bottom,0px);
   color-scheme:light;
 }
 html.dark{
@@ -66,7 +68,7 @@ html.dark{
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-html{scroll-padding-top:calc(var(--nav-h) + 16px)}
+html{scroll-padding-top:calc(var(--nav-h) + var(--safe-top) + 16px)}
 /* 弹窗打开时 body 设了 overflow:hidden，滚动条一没，页面变宽 15px、卡片重新折行，整页抽一下（2026-10-01 用户发现）。
    预留滚动条那条槽位，有没有滚动条宽度都不变 */
 html{scrollbar-gutter:stable}
@@ -99,7 +101,7 @@ mark{background:var(--mark);color:inherit;border-radius:2px;padding:0 1px}
 [hidden]{display:none!important}
 
 /* nav */
-.nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:30;background:var(--bg);border-bottom:1px solid var(--divider)}
+.nav{position:fixed;top:0;left:0;right:0;height:calc(var(--nav-h) + var(--safe-top));padding-top:var(--safe-top);z-index:30;background:var(--bg);border-bottom:1px solid var(--divider)}
 .nav-in{height:100%;display:flex;align-items:center;gap:16px;padding:0 24px}
 .title{display:flex;align-items:center;gap:10px;font-weight:600;font-size:16px;color:var(--t1);white-space:nowrap}
 .title:hover{text-decoration:none;color:var(--t1)}
@@ -126,7 +128,7 @@ html.dark .switch .sun{display:none} html.dark .switch .moon{display:block}
 .menu-btn{display:none}
 
 /* sidebar */
-.sidebar{position:fixed;top:var(--nav-h);bottom:0;left:0;width:var(--side-w);background:var(--bg-alt);padding:32px 32px 96px;overflow-y:auto;overscroll-behavior:contain;z-index:20}
+.sidebar{position:fixed;top:calc(var(--nav-h) + var(--safe-top));bottom:0;left:0;width:var(--side-w);background:var(--bg-alt);padding:32px 32px 96px;overflow-y:auto;overscroll-behavior:contain;z-index:20}
 .group{padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid var(--divider)}
 .group:last-of-type{border-bottom:0}
 .gt{font-size:14px;font-weight:700;color:var(--t1);line-height:24px;margin-bottom:4px;display:flex;justify-content:space-between;align-items:baseline}
@@ -183,7 +185,7 @@ html.dark .switch .sun{display:none} html.dark .switch .moon{display:block}
 .backdrop{display:none}
 
 /* content */
-.content{padding:calc(var(--nav-h) + 40px) 48px 128px calc(var(--side-w) + 48px)}
+.content{padding:calc(var(--nav-h) + var(--safe-top) + 40px) 48px calc(128px + var(--safe-bottom)) calc(var(--side-w) + 48px)}
 .doc{max-width:900px;margin:0 auto}
 .doc-head{margin-bottom:28px}
 .doc-head h1{font-size:32px;line-height:40px;font-weight:700;letter-spacing:-.02em;margin:0 0 8px}
@@ -316,7 +318,7 @@ abbr.term:hover{border-bottom-color:var(--brand-1);color:var(--brand-1)}
   .sidebar.open{transform:none;box-shadow:0 8px 24px rgba(0,0,0,.2)}
   .backdrop{display:block;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:15;opacity:0;pointer-events:none;transition:opacity .25s}
   .backdrop.on{opacity:1;pointer-events:auto}
-  .content{padding:calc(var(--nav-h) + 24px) 20px 96px}
+  .content{padding:calc(var(--nav-h) + var(--safe-top) + 24px) 20px calc(96px + var(--safe-bottom))}
   .doc-head h1{font-size:26px;line-height:34px}
   .card{padding:18px 16px 14px;border-radius:10px}
   .card-h h3{font-size:16px;line-height:24px}
